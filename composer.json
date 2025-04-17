@@ -1,5 +1,5 @@
 {
-    "name": "bleeld/think-jwt",
+    "name": "bleeld/think-token",
     "description": "This is a collection of JWT Token remote file management drivers developed in factory mode. Users can use different JWT extensions according to their business needs. In the future, developers can further improve more token drivers according to their own needs.",
     "homepage": "https://github.com/bleeld/think-token",
     "keywords": [
