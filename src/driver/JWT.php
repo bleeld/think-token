@@ -1,6 +1,6 @@
 <?php
 
-namespace token\driver;
+namespace think\driver;
 
 use ArrayAccess;
 use DomainException;

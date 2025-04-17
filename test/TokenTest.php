@@ -1,9 +1,9 @@
 <?php
-namespace token;
+namespace think;
 
 use PHPUnit\Framework\TestCase;
-use token\driver\JWT;
-use token\driver\Key;
+use think\driver\JWT;
+use think\driver\Key;
 use think\facade\Cookie;
 
 class TokenTest extends TestCase

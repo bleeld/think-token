@@ -1,8 +1,8 @@
 <?php
-namespace token;
+namespace think;
 
-use token\driver\JWT;
-use token\driver\Key;
+use think\driver\JWT;
+use think\driver\Key;
 
 class Token
 {
