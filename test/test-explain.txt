@@ -1,0 +1,59 @@
+
+代码解释
+1. 单元测试类 TokenTest
+setUp 方法:
+在每个测试用例执行前调用，用于初始化测试环境。
+设置默认的密钥、过期时间和加密方法，确保测试用例在一致的环境下运行。
+2. 测试方法
+testCreateToken:
+
+测试 createToken 方法，验证其生成普通token和包含刷新token的token的功能。
+使用 mockStaticMethod 来mock JWT::encode 方法，返回预定义的token。
+验证返回的token是否符合预期。
+testVerifyToken:
+
+测试 verifyToken 方法，验证其处理有效token和过期token的能力。
+使用 mockStaticMethod 来mock JWT::decode 方法，分别返回有效payload和抛出过期异常。
+验证返回的结果是否符合预期。
+testSwapToken:
+
+测试 swapToken 方法，验证其使用有效刷新token生成新token和自动设置cookie的功能。
+使用 mockStaticMethod 来mock verifyToken 和 createToken 方法，返回预定义的结果。
+使用 mockStaticMethod 来mock Cookie::set 方法，验证是否调用了设置cookie的方法。
+验证返回的结果是否符合预期。
+testAutoSwapToken:
+
+测试 autoSwapToken 方法，验证其在access token过期时自动刷新token的功能。
+使用 mockStaticMethod 来mock verifyToken 和 swapToken 方法，返回预定义的结果。
+验证返回的结果是否符合预期。
+3. 辅助方法
+mockStaticMethod:
+
+用于mock静态方法。
+创建一个mock对象，并设置其方法返回预定义的值。
+使用 setStaticProperty 方法将mock对象设置为类的静态属性。
+setStaticProperty:
+
+用于设置类的静态属性。
+使用反射机制来访问和修改类的静态属性。
+代码执行流程
+初始化:
+
+在每个测试用例执行前，调用 setUp 方法初始化测试环境。
+执行测试:
+
+调用相应的测试方法，如 testCreateToken、testVerifyToken 等。
+在测试方法中，使用 mockStaticMethod 来mock相关方法，返回预定义的结果。
+调用被测方法，并验证其返回结果是否符合预期。
+验证结果:
+
+使用断言方法（如 assertEquals）来验证被测方法的返回结果是否符合预期。
+代码注释
+setUp: 在每个测试用例执行前初始化配置。
+testCreateToken: 测试 createToken 方法，包括生成普通token和包含刷新token的token。
+testVerifyToken: 测试 verifyToken 方法，包括验证有效token和过期token。
+testSwapToken: 测试 swapToken 方法，包括使用有效刷新token生成新token和自动设置cookie。
+testAutoSwapToken: 测试 autoSwapToken 方法，包括access token过期时自动刷新token。
+mockStaticMethod: 用于mock静态方法。
+setStaticProperty: 用于设置静态属性。
+通过以上代码和解释，可以清晰地理解单元测试的设计和执行流程，确保被测方法在各种情况下都能正确运行。
