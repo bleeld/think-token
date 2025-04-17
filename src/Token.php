@@ -31,9 +31,11 @@ class Token
             'iat' => $time, //签发时间
             'nbf' => $time , //(Not Before)：某个时间点后才能访问，比如设置time+30，表示当前时间30秒后才能使用
             'exp' => $time + $expTime, 
-            'data' => $data, //自定义信息，不要定义敏感信息
+            'data' => is_array($data) ? $data : [$data], //自定义信息，不要定义敏感信息
         ];
+
         $payload['data']['scopes'] =   'role_access';   //  添加access标识
+
         $accessToken = JWT::encode($payload, self::getKey(), self::getMethod()); //签发token
         $data = ['code'=>200, 'msg'=>'success', 'data'=>['access_token'=>$accessToken, 'token_type'=>'bearer']];
         if ($isRefreshToken) {
